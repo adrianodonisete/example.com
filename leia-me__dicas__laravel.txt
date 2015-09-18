@@ -1,0 +1,4 @@
+
+
+toda vez que criar novas classes,
+rodar no terminal o comando $ sudo composer dump-autoload
