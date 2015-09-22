@@ -11,6 +11,33 @@
   |
  */
 
+Route::get('cats/{cat}/delete', function(Furbook\Cat $cat) {
+    $cat->delete();
+    return redirect('cats')
+                    ->withSuccess('Cat has been deleted.');
+});
+
+Route::get('cats/create', function() {    
+    $breeds = Furbook\Breed::all();
+    
+    $arrBreeds = array();
+    foreach ($breeds as $breed) {
+        $arrBreeds[$breed->id] = $breed->name;
+    }
+    
+//    echo '<pre>';
+//    echo print_r($breeds, true);
+//    echo '</pre>';
+    return view('cats.create')->with('breeds', $arrBreeds);
+});
+Route::post('cats', function() {
+    $cat = Furbook\Cat::create(Input::all());
+    return redirect('cats/' . $cat->id)
+                    ->withSuccess('Cat has been created.');
+});
+
+
+
 // about
 Route::get('about', function() {
     return view('about')->with('number_of_cats', 9000);
@@ -60,29 +87,24 @@ Route::get('cats/breeds/{name}', function($name) {
 });
 
 Route::get('cats/{cat}', function(Furbook\Cat $cat) {
-    return view('cats.show')->with('cat', $cat);
+    return view('cats.show')->with('cats', $cat);
 });
 
-Route::get('cats/create', function() {
-    return view('cats.create');
-});
-Route::post('cats', function() {
-    $cat = Furbook\Cat::create(Input::all());
-    return redirect('cats/' . $cat->id)
-                    ->withSuccess('Cat has been created.');
-});
 
 Route::get('cats/{cat}/edit', function(Furbook\Cat $cat) {
-    return view('cats.edit')->with('cat', $cat);
+    //echo '<pre>', print_r($cat, true), '</pre>';
+      
+    $breeds = Furbook\Breed::all();
+    
+    $arrBreeds = array();
+    foreach ($breeds as $breed) {
+        $arrBreeds[$breed->id] = $breed->name;
+    }
+    
+    return view('cats.edit')->with('cat', $cat)->with('breeds', $arrBreeds);
 });
-Route::put('cats/{cat}', function(Furbook\Cat $cat) {
+Route::post('cats/{cat}', function(Furbook\Cat $cat) {
     $cat->update(Input::all());
     return redirect('cats/' . $cat->id)
                     ->withSuccess('Cat has been updated.');
-});
-
-Route::delete('cats/{cat}/delete', function(Furbook\Cat $cat) {
-    $cat->delete();
-    return redirect('cats')
-                    ->withSuccess('Cat has been deleted.');
 });
