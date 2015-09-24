@@ -10,6 +10,16 @@
   | and give it the controller to call when that URI is requested.
   |
  */
+Route::resource('cat', 'CatController');
+
+
+
+// inicio
+Route::get('nada', function() {
+    return 'Nada';
+});
+
+
 
 Route::get('cats/{cat}/delete', function(Furbook\Cat $cat) {
     $cat->delete();
@@ -108,3 +118,8 @@ Route::post('cats/{cat}', function(Furbook\Cat $cat) {
     return redirect('cats/' . $cat->id)
                     ->withSuccess('Cat has been updated.');
 });
+
+
+
+// user 
+Route::get('user/{id}', ['uses' => 'UserController@show']);

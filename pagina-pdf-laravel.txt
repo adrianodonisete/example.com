@@ -1,4 +1,4 @@
 Laravel 5 essentials
 
-página 43 - Moving from simple routing to powerful controllers
+página 51 - Mass assignment
 
