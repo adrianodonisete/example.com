@@ -18,6 +18,17 @@ class CatController extends Controller
      */
     public function index() {
         
+//        $v = '<pre>'.print_r($cats, true).'</pre>';        
+//        $cat = new \Furbook\Cat();
+        //return 'index'.$v;
+        
+        // todos
+        $cats = Cat::all();
+        return view('cat.index')->with('cats', $cats);
+    }
+    
+    /**
+     * 
         
         // testes
         $v = '';
@@ -49,16 +60,7 @@ class CatController extends Controller
         $cat->create($data);
         
         return 'index <br />'.$v.'<br />'.$cat->name.'';
-        
-        
-//        $v = '<pre>'.print_r($cats, true).'</pre>';        
-//        $cat = new \Furbook\Cat();
-        //return 'index'.$v;
-        
-        // todos
-//        $cats = Cat::all();
-//        return view('cat.index')->with('cats', $cats);
-    }
+     */
 
     /**
      * Show the form for creating a new resource.

@@ -20,6 +20,9 @@ class CreateCatsTable extends Migration
             $table->integer('breed_id')->unsigned()->nullable();
             $table->foreign('breed_id')->references('id')->on('breeds');
         });
+        
+    
+//        $table->softDeletes();
     }
 
     public function down() {

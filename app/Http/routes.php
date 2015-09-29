@@ -14,10 +14,10 @@ Route::resource('cat', 'CatController');
 
 
 
-// inicio
-Route::get('nada', function() {
-    return 'Nada';
-});
+//// inicio
+//Route::get('nada', function() {
+//    return 'Nada';
+//});
 
 
 

@@ -1,4 +1,4 @@
-Laravel 5 essentials
+﻿Laravel 5 essentials
 
-página 51 - Mass assignment
+página 54 - Query scopes
 
